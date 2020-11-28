@@ -8,7 +8,7 @@ public class giperbola : MonoBehaviour
      private float mu=0;
 	private float v0=0;
 	public float alpha=0;
-	
+	private float beta=0;
 	private float r=0;
     private float r0=0;
     private float rx=0;
@@ -56,21 +56,27 @@ public class giperbola : MonoBehaviour
 		p=c*c/mu;
 		//Debug.Log(phi0);
 		phi00=phi0;
+		beta=Mathf.Acos(transform.position.x/r0);
 
     }
 	
 
     // Update is called once per frame
-    void FixedUpdate()
+   void FixedUpdate()
     {	
 		//t= t+Time.fixedDeltaTime;
-		phi=phi00+Time.fixedDeltaTime*c*(1+e*Mathf.Cos(phi0-phi00))*(1+e*Mathf.Cos(phi0-phi00))/(p*p);
-		r=p/(1f+e*Mathf.Cos(phi0-phi));
+		phi=phi00+Time.fixedDeltaTime*c*(1+e*Mathf.Cos(phi00))*(1+e*Mathf.Cos(phi00))/(p*p);
+		r=p/(1f+e*Mathf.Cos(phi));
 		//Vector3 vect=new Vector3(r*Mathf.Cos(phi),ry,r*Mathf.Sin(phi));
 	//Debug.Log(phi);
-		transform.position=new Vector3(r*Mathf.Cos(phi),ry,r*Mathf.Sin(phi));
+	//beta=Mathf.Acos(r0*Mathf.Cos(0)/r0);
+		transform.position=new Vector3(r*Mathf.Cos(phi-phi0)*Mathf.Cos(beta)-r*Mathf.Sin(phi-phi0)*Mathf.Sin(beta),
+		ry,r*Mathf.Cos(phi-phi0)*Mathf.Sin(beta)+r*Mathf.Sin(phi-phi0)*Mathf.Cos(beta));
 		phi00=phi;
-	//Debug.Log((1+e*Mathf.Cos(phi0-phi))/(p*p));
+		//vec=transform.position;
+	
+		
+	//Debug.Log(transform.position);
         
     }
 }
