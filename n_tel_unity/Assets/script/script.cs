@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class script_adams : MonoBehaviour
+public class script: MonoBehaviour
 { 	private  List<Material> texture=new List<Material>();
     private Material materiall;
 	public Material materialll;
