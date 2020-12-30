@@ -8,7 +8,7 @@ public class script: MonoBehaviour
 	public Material materialll;
 	private float G=1;
 	private float rmod=0;
-	static public int n=8;
+	static public int n=6;
 	public GameObject prefab;
 	static public List<GameObject> sphere=new List<GameObject>();
 	static public List<Rigidbody> rb=new List<Rigidbody>();
